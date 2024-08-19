@@ -8,7 +8,7 @@ export default function RootLayout(){
                 <Link to="/" className={`${style.resetLink} ${style.mainHeaderLogo}`}>FitTrackPro</Link>
                 <div>
                     <Link to="/privacypolicy" className={`${style.resetLink} ${style.mainHeaderPrivacyButton}`}>Privacy Policy</Link>
-                    <Link to="/login" className={style.resetLink}>Log In</Link>
+                    <Link to="/login" className={`${style.resetLink} ${style.mainHeaderlogInButton}`}>Log In</Link>
                 </div>
             </header>
             <main>
