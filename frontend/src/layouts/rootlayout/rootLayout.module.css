@@ -1,0 +1,38 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.rootLayout{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100dvh;
+
+    .mainHeader{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 5%;
+        background-color: #323d4279;
+        backdrop-filter: blur(10px);
+
+        .mainHeaderLogo{
+            font-size: 1.2rem;
+        }
+        .mainHeaderPrivacyButton{
+            color: #323d42;
+            background-color: #f1f1f1;
+            padding: 8px;
+            margin-right: 15px;
+            border-radius: 8px;
+        }
+    }
+    main{
+        flex: 1;
+    }
+}
+.resetLink{
+    text-decoration: none;
+    color: #f1f1f1;
+}

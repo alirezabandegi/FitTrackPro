@@ -1,13 +1,14 @@
 import { Link, Outlet } from "react-router-dom";
+import style from "./rootLayout.module.css"
 
 export default function RootLayout(){
     return(
-        <div className="rootLayout">
-            <header>
-                <Link to="/">FitTrackPro</Link>
+        <div className={style.rootLayout}>
+            <header className={style.mainHeader}>
+                <Link to="/" className={`${style.resetLink} ${style.mainHeaderLogo}`}>FitTrackPro</Link>
                 <div>
-                    <Link to="/privacypolicy">Privacy Policy</Link>
-                    <Link to="/login">Log In</Link>
+                    <Link to="/privacypolicy" className={`${style.resetLink} ${style.mainHeaderPrivacyButton}`}>Privacy Policy</Link>
+                    <Link to="/login" className={style.resetLink}>Log In</Link>
                 </div>
             </header>
             <main>
