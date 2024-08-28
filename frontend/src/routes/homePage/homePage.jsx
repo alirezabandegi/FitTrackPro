@@ -2,10 +2,11 @@ import style from "./homePage.module.css"
 
 export default function HomePage(){
     return(
+        <>
         <section className={style.homePage}>
             <div className={style.bannerUpSide}>
                 <h1>TRACK YOUR <br/>FITNESS</h1>
-                <h1>JOURNEY</h1>
+                <h1 className={style.bannerUpSideJourneyText}>JOURNEY</h1>
             </div>
 
             <div className={style.bannerDownSide}>
@@ -31,5 +32,6 @@ export default function HomePage(){
             </div>
         </section>
 
+        </>
     );
 }

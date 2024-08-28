@@ -6,6 +6,11 @@
     box-sizing: border-box;
     font-family: "Open Sans", sans-serif;
 }
+html, body {
+    margin: 0; 
+    height: 100dvh; 
+    overflow: hidden
+}
 .rootLayout{
     display: flex;
     flex-direction: column;
@@ -23,22 +28,6 @@
         top: 0;
         left: 0;
         width: 100%;
-
-        .mainHeaderLogo{
-            font-size: 1.5vw;
-            font-weight: bold;
-        }
-        .mainHeaderPrivacyButton{
-            color: #323d42;
-            background-color: #f1f1f1;
-            padding: 8px;
-            margin-right: 15px;
-            border-radius: 8px;
-            font-size: 1vw;
-        }
-        .mainHeaderlogInButton{
-            font-size: 1vw;
-        }
     }
     main{
         flex: 1;
@@ -47,4 +36,32 @@
 .resetLink{
     text-decoration: none;
     color: #f1f1f1;
+}
+.mainHeaderLogo{
+    font-size: 1.5vw;
+    font-weight: bold;
+}
+.mainHeaderPrivacyButton{
+    color: #323d42;
+    background-color: #f1f1f1;
+    padding: 8px;
+    margin-right: 15px;
+    border-radius: 8px;
+    font-size: 1vw;
+}
+.mainHeaderlogInButton{
+    font-size: 1vw;
+}
+@media screen and (min-width: 0px) and (orientation: portrait) {
+    .mainHeaderLogo{
+        font-size: 3.5vw;
+    }
+    .mainHeaderPrivacyButton{
+        margin-right: 2vw;
+        border-radius: 1.5vw;
+        font-size: 3vw;
+    }
+    .mainHeaderlogInButton{
+        font-size: 3vw;
+    }
 }
