@@ -1,0 +1,51 @@
+.signUpContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+    width: clamp(320px, 30%, 768px);
+    margin: 0 auto;
+    line-height: 1.5;
+    
+    h1{
+        font-size: 2rem;
+    }
+    p{
+        font-size: 1.3rem;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        border-bottom:1px solid #f1f1f1;
+        padding-bottom: 2rem;
+        margin-bottom: 2rem;
+
+        .input{
+            border: none;
+            border-radius: 20px;
+            background-color: #1c2021;
+            padding: 10px 10px;
+            font-size: 1.3rem;
+            margin-top: 30px;
+            text-align: center;
+            width: 90%;
+        }
+        .submit{
+            border-radius: 20px;
+            background-color: #007dd3;
+            padding: 10px 10px;
+            font-size: 1.3rem;
+            margin-top: 30px;
+            text-align: center;
+            width: 50%;
+        }
+    }
+    .linkToLogInPage{
+        font-size: 1.3rem;
+        text-decoration: none;
+    }
+}
