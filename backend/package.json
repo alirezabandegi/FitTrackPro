@@ -1,0 +1,28 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alirezabandegi/FitTrackPro.git"
+  },
+  "author": "Alireza Bandegi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alirezabandegi/FitTrackPro/issues"
+  },
+  "homepage": "https://github.com/alirezabandegi/FitTrackPro#readme",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.6.0",
+    "nodemon": "^3.1.4"
+  }
+}

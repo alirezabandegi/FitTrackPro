@@ -12,7 +12,8 @@ export default function SignUp(){
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:3000/signUp", { name, email, password})
+        const SignUpTime = Date.now();
+        axios.post("http://localhost:3000/signUp", { name, email, password })
         .then(result => {
             console.log(result);
             navigate("/logIn");
