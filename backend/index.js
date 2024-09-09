@@ -17,16 +17,16 @@ db.on("error", console.error.bind(console, "MongoDB connection error"));
 
 app.post("/logIn", (req, res) => {
     const {email, password} = req.body;
-    UsersModel.findOne({email : email})
+    UsersModel.findOne({ email : email })
     .then(user => {
         if(user) {
             if(user.password === password){
                 res.status(200).json("Success")
             }else{
-                res.json("The password is incorrect")
+                res.json("Email or password is invalid")
             }
         }else{
-            res.status(404).json("No record existed")
+            res.json("Email or password is invalid")
         }
     })
 })

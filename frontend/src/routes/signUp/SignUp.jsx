@@ -27,8 +27,8 @@ export default function SignUp(){
             <p><strong>Let's create your account!</strong></p>
             
             <form onSubmit={handleSubmit}>
-                <input type="text" name="name" placeholder="Name" className={style.input} onChange={(e) => setName(e.target.value)} required/>
-                <input type="email" name="email" placeholder="Email" className={style.input} onChange={(e) => setEmail(e.target.value)} required/>
+                <input type="text" name="name" placeholder="Name" className={style.input} onChange={(e) => setName(e.target.value)} autocomplete="off" required/>
+                <input type="email" name="email" placeholder="Email" className={style.input} onChange={(e) => setEmail(e.target.value)} autocomplete="off" required/>
                 <input type="password" name="password" placeholder="Password" className={style.input} onChange={(e) => setPassword(e.target.value)} minlength="8" required/>
 
                 <button type="submit" className={style.submit}>Sign Up</button>

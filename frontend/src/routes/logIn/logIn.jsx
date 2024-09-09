@@ -8,18 +8,22 @@ export default function LogIn(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    const emailInput = document.getElementById("emailInput");
+    const passwordInput = document.getElementById("passwordInput");
 
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post("http://localhost:3000/logIn", { email, password })
-        .then(result => {
-            console.log(result);
-            if(result.data === "Success"){
+        .then(result => result.data)
+        .then(data => {
+            const Inputs = document.querySelectorAll(style.input);
+            if(data === "Success"){
                 navigate("/user/dashboard");
             }
             else{
-                navigate("/signUp")
-                alert("You are not registered to this service")
+                emailInput.style.border = "solid 2px red";
+                passwordInput.style.border = "solid 2px red";
+                alert(data)
             }
         })
         .catch(err => console.log(err));
@@ -30,8 +34,8 @@ export default function LogIn(){
             <h1>Login</h1>
             
             <form onSubmit={handleSubmit}>
-                <input type="email" name="email" placeholder="Email" className={style.input} onChange={(e) => setEmail(e.target.value)} required/>
-                <input type="password" name="password" placeholder="Password" className={style.input} onChange={(e) => setPassword(e.target.value)} minlength="8" required/>
+                <input type="email" name="email" placeholder="Email" id="emailInput" className={style.input} onChange={(e) => setEmail(e.target.value)} autocomplete="off" required/>
+                <input type="password" name="password" placeholder="Password" id="passwordInput" className={style.input} onChange={(e) => setPassword(e.target.value)} minlength="8" required/>
 
                 <button type="submit" className={style.submit}>Login</button>
             </form>
