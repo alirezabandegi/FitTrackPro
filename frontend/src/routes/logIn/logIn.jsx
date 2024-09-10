@@ -10,7 +10,6 @@ export default function LogIn(){
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
     const { setUser } = useContext(UserContext);
-    const emailInput = document.getElementById("emailInput");
     const passwordInput = document.getElementById("passwordInput");
 
     const handleSubmit = (e) => {
@@ -21,10 +20,13 @@ export default function LogIn(){
                 setUser(result.data.user);
                 navigate("/user/dashboard");
             }
-            else{
-                emailInput.style.border = "solid 2px red";
+            else if(result.data === "Password is invalid"){
                 passwordInput.style.border = "solid 2px red";
                 alert(result.data);
+            }
+            else{
+                alert(result.data);
+                navigate("/signUp");
             }
         })
         .catch(err => console.log(err));
@@ -35,7 +37,7 @@ export default function LogIn(){
             <h1>Login</h1>
             
             <form onSubmit={handleSubmit}>
-                <input type="email" name="email" placeholder="Email" id="emailInput" className={style.input} onChange={(e) => setEmail(e.target.value)} autocomplete="off" required/>
+                <input type="email" name="email" placeholder="Email" className={style.input} onChange={(e) => setEmail(e.target.value)} autocomplete="off" required/>
                 <input type="password" name="password" placeholder="Password" id="passwordInput" className={style.input} onChange={(e) => setPassword(e.target.value)} minlength="8" required/>
 
                 <button type="submit" className={style.submit}>Login</button>

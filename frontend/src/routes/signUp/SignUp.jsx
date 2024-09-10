@@ -8,22 +8,32 @@ export default function SignUp(){
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [secendPassword, setSecendPassword] = useState("");
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:3000/signUp", { name, email, password })
-        .then(result => {
-            if(result.data === "Success"){
-                navigate("/logIn");
-            }
-            else{
-                const emailInput = document.getElementById("emailInput");
-                emailInput.style.border = "solid 2px red";
-                alert(result.data);
-            }
-        })
-        .catch(err => console.log(err));
+        if(password === secendPassword){
+            axios.post("http://localhost:3000/signUp", { name, email, password })
+            .then(result => {
+                if(result.data === "Success"){
+                    navigate("/logIn");
+                }
+                else{
+                    const emailInput = document.getElementById("emailInput");
+                    emailInput.style.border = "solid 2px red";
+                    alert(result.data);
+                }
+            })
+            .catch(err => console.log(err));
+        }
+        else{
+            const password = document.getElementById("password");
+            const secendPassword = document.getElementById("secendPassword");
+            password.style.border = "solid 2px red";
+            secendPassword.style.border = "solid 2px red";
+            alert("Both passwords do not match");
+        }
     }
 
     return(
@@ -34,7 +44,8 @@ export default function SignUp(){
             <form onSubmit={handleSubmit}>
                 <input type="text" name="name" placeholder="Name" className={style.input} onChange={(e) => setName(e.target.value)} autocomplete="off" required/>
                 <input type="email" name="email" placeholder="Email" id="emailInput" className={style.input} onChange={(e) => setEmail(e.target.value)} autocomplete="off" required/>
-                <input type="password" name="password" placeholder="Password" className={style.input} onChange={(e) => setPassword(e.target.value)} minlength="8" required/>
+                <input type="password" name="password" placeholder="Password" id="password" className={style.input} onChange={(e) => setPassword(e.target.value)} minlength="8" required/>
+                <input type="password" name="secendPassword" placeholder="Password" id="secendPassword" className={style.input} onChange={(e) => setSecendPassword(e.target.value)} minlength="8" required/>
 
                 <button type="submit" className={style.submit}>Sign Up</button>
             </form>

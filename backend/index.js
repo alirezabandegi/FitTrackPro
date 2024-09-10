@@ -23,10 +23,10 @@ app.post("/logIn", (req, res) => {
             if(user.password === password){
                 res.json({ data:"Success", user: user })
             }else{
-                res.json("Email or password is invalid")
+                res.json("Password is invalid")
             }
         }else{
-            res.json("Email or password is invalid")
+            res.json("Account doesn't exist")
         }
     })
     .catch(err => res.status(500).json(err));
