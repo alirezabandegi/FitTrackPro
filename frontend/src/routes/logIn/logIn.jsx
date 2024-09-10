@@ -1,29 +1,30 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from '../../provider';
 import style from "./logIn.module.css";
 
 export default function LogIn(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    const { setUser } = useContext(UserContext);
     const emailInput = document.getElementById("emailInput");
     const passwordInput = document.getElementById("passwordInput");
 
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post("http://localhost:3000/logIn", { email, password })
-        .then(result => result.data)
-        .then(data => {
-            const Inputs = document.querySelectorAll(style.input);
-            if(data === "Success"){
+        .then(result => {
+            if(result.data.data === "Success"){
+                setUser(result.data.user);
                 navigate("/user/dashboard");
             }
             else{
                 emailInput.style.border = "solid 2px red";
                 passwordInput.style.border = "solid 2px red";
-                alert(data)
+                alert(result.data);
             }
         })
         .catch(err => console.log(err));

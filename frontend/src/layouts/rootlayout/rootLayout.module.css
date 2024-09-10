@@ -15,7 +15,6 @@
     .mainHeader{
         display: flex;
         align-items: center;
-        justify-content: space-between;
         padding: 20px 5%;
         background-color: transparent;
         backdrop-filter: blur(7px);
@@ -23,6 +22,14 @@
         top: 0;
         left: 0;
         width: 100%;
+        
+        .userLinks{
+            margin-left: 1.5vw;
+        }
+        
+        div{
+            margin-left: auto;
+        }
     }
     main{
         flex: 1;

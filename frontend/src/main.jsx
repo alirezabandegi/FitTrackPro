@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import { UserProvider } from './Provider';
 import Rootlayout from './layouts/rootlayout/RootLayout'
 import HomePage from './routes/homePage/HomePage'
 import PrivacyPolicy from './routes/privacyPolicy/PrivacyPolicy'
@@ -8,7 +9,6 @@ import LogIn from './routes/logIn/LogIn'
 import SignUp from './routes/signUp/SignUp'
 import Dashboard from './routes/dashboard/Dashboard'
 import TrackWorkout from './routes/trackWorkout/TrackWorkout'
-import Goals from './routes/goals/Goals'
 import Progress from './routes/progress/Progress'
 import Settings from './routes/settings/Settings'
 
@@ -45,10 +45,6 @@ const router = createBrowserRouter([
         element: <TrackWorkout/>
       },
       {
-        path:"/user/goals",
-        element: <Goals/>
-      },
-      {
         path:"/user/progress",
         element: <Progress/>
       },
@@ -62,6 +58,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <UserProvider>
+      <RouterProvider router={router} />
+    </UserProvider>
   </StrictMode>,
 )

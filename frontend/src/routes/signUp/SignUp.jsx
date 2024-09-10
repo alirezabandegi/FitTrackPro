@@ -12,11 +12,16 @@ export default function SignUp(){
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const SignUpTime = Date.now();
         axios.post("http://localhost:3000/signUp", { name, email, password })
         .then(result => {
-            console.log(result);
-            navigate("/logIn");
+            if(result.data === "Success"){
+                navigate("/logIn");
+            }
+            else{
+                const emailInput = document.getElementById("emailInput");
+                emailInput.style.border = "solid 2px red";
+                alert(result.data);
+            }
         })
         .catch(err => console.log(err));
     }
@@ -28,7 +33,7 @@ export default function SignUp(){
             
             <form onSubmit={handleSubmit}>
                 <input type="text" name="name" placeholder="Name" className={style.input} onChange={(e) => setName(e.target.value)} autocomplete="off" required/>
-                <input type="email" name="email" placeholder="Email" className={style.input} onChange={(e) => setEmail(e.target.value)} autocomplete="off" required/>
+                <input type="email" name="email" placeholder="Email" id="emailInput" className={style.input} onChange={(e) => setEmail(e.target.value)} autocomplete="off" required/>
                 <input type="password" name="password" placeholder="Password" className={style.input} onChange={(e) => setPassword(e.target.value)} minlength="8" required/>
 
                 <button type="submit" className={style.submit}>Sign Up</button>
