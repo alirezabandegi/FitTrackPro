@@ -1,44 +1,45 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from '../../provider';
 import style from "./logIn.module.css";
 
 export default function LogIn(){
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    const { setUser } = useContext(UserContext);
-    const passwordInput = document.getElementById("passwordInput");
 
-    const handleSubmit = (e) => {
+    const [formData, setFormData] = useState({
+        email: '',
+        password: ''
+    });
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        axios.post("http://localhost:3000/logIn", { email, password })
-        .then(result => {
-            if(result.data.data === "Success"){
-                setUser(result.data.user);
-                navigate("/user/dashboard");
+        try {
+            await axios.post('http://localhost:3000/api/auth/login', formData, { withCredentials: true });
+            alert('Login successful');
+            navigate("/user/dashboard");
+        } catch (error) {
+            if (error.response) {
+                alert(error.response.data.error);
+            } else if (error.request) {
+                alert('No response from server. Please try again later.');
+            } else {
+                alert('Error: ' + error.message);
             }
-            else if(result.data === "Password is invalid"){
-                passwordInput.style.border = "solid 2px red";
-                alert(result.data);
-            }
-            else{
-                alert(result.data);
-                navigate("/signUp");
-            }
-        })
-        .catch(err => console.log(err));
-    }
+        }
+    };
 
     return(
         <div className={style.logInContainer}>
             <h1>Login</h1>
             
             <form onSubmit={handleSubmit}>
-                <input type="email" name="email" placeholder="Email" className={style.input} onChange={(e) => setEmail(e.target.value)} autocomplete="off" required/>
-                <input type="password" name="password" placeholder="Password" id="passwordInput" className={style.input} onChange={(e) => setPassword(e.target.value)} minlength="8" required/>
+                <input type="email" name="email" placeholder="Email" className={style.input} onChange={handleChange} autoComplete="off" required/>
+                <input type="password" name="password" placeholder="Password" className={style.input} onChange={handleChange} minLength="8" required/>
 
                 <button type="submit" className={style.submit}>Login</button>
             </form>

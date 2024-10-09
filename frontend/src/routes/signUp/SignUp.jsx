@@ -5,36 +5,34 @@ import { useNavigate } from "react-router-dom";
 import style from "./signUp.module.css";
 
 export default function SignUp(){
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [secendPassword, setSecendPassword] = useState("");
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        password: ''
+    });
+    
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if(password === secendPassword){
-            axios.post("http://localhost:3000/signUp", { name, email, password })
-            .then(result => {
-                if(result.data === "Success"){
-                    navigate("/logIn");
-                }
-                else{
-                    const emailInput = document.getElementById("emailInput");
-                    emailInput.style.border = "solid 2px red";
-                    alert(result.data);
-                }
-            })
-            .catch(err => console.log(err));
+        try {
+            await axios.post('http://localhost:3000/api/auth/signup', formData);
+            alert('User registered successfully');
+            navigate("/logIn");
+        } catch (error) {
+            if (error.response) {
+                alert(error.response.data.error);
+            } else if (error.request) {
+                alert('No response from server. Please try again later.');
+            } else {
+                alert('Error: ' + error.message);
+            }
         }
-        else{
-            const password = document.getElementById("password");
-            const secendPassword = document.getElementById("secendPassword");
-            password.style.border = "solid 2px red";
-            secendPassword.style.border = "solid 2px red";
-            alert("Both passwords do not match");
-        }
-    }
+    };
 
     return(
         <div className={style.signUpContainer}>
@@ -42,10 +40,9 @@ export default function SignUp(){
             <p><strong>Let's create your account!</strong></p>
             
             <form onSubmit={handleSubmit}>
-                <input type="text" name="name" placeholder="Name" className={style.input} onChange={(e) => setName(e.target.value)} autocomplete="off" required/>
-                <input type="email" name="email" placeholder="Email" id="emailInput" className={style.input} onChange={(e) => setEmail(e.target.value)} autocomplete="off" required/>
-                <input type="password" name="password" placeholder="Password" id="password" className={style.input} onChange={(e) => setPassword(e.target.value)} minlength="8" required/>
-                <input type="password" name="secendPassword" placeholder="Password" id="secendPassword" className={style.input} onChange={(e) => setSecendPassword(e.target.value)} minlength="8" required/>
+                <input type="text" name="name" placeholder="Name" className={style.input} onChange={handleChange} autoComplete="off" required/>
+                <input type="email" name="email" placeholder="Email" className={style.input} onChange={handleChange} autoComplete="off" required/>
+                <input type="password" name="password" placeholder="Password" className={style.input} onChange={handleChange} minLength="8" required/>
 
                 <button type="submit" className={style.submit}>Sign Up</button>
             </form>

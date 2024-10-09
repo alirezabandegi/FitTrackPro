@@ -1,7 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import { UserProvider } from './Provider';
 import Rootlayout from './layouts/rootlayout/RootLayout'
 import HomePage from './routes/homePage/HomePage'
 import PrivacyPolicy from './routes/privacyPolicy/PrivacyPolicy'
@@ -58,8 +57,6 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <UserProvider>
-      <RouterProvider router={router} />
-    </UserProvider>
+    <RouterProvider router={router} />
   </StrictMode>,
 )
