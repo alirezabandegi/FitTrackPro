@@ -1,0 +1,31 @@
+<svg width="400" height="130" xmlns="http://www.w3.org/2000/svg" style="background-color: #E7E7E7;">
+        <!-- Outer Container -->
+        <rect x="0" y="0" width="400" height="180" fill="#E8E7D6" stroke="#A0A0A0" stroke-width="1" rx="5" ry="5" />
+        
+        <!-- Header -->
+        <rect x="0" y="0" width="400" height="30" fill="#E8E7D6" />
+        <image href="https://icon-library.com/images/folder-icon-png/folder-icon-png-29.jpg" x="130" y="5" width="20" height="20"/>
+        <text x="150" y="20" font-family="Tahoma" font-weight="bold" font-size="12" fill="black">FitTrackPro.jsx</text>
+        
+        <!-- Close Button -->
+        <text x="370" y="20" font-family="Tahoma" font-size="16" fill="black" style="cursor: pointer;">&#10006;</text> <!-- 'X' character -->
+    
+        <!-- Horizontal Line -->
+        <line x1="0" y1="25" x2="400" y2="25" stroke="#A0A0A0" stroke-width="1" />
+    
+        <!-- Progress Bar Container -->
+        <text x="5" y="60" font-family="Tahoma" font-size="12" fill="black">From 'Nothing' to 'Building Something Great!'</text>
+        <rect x="5" y="70" width="300" height="10" fill="#E5E5E5" stroke="#909090" stroke-width="1"/>
+        <rect x="5" y="70" width="80" height="10" fill="#0066CC"/> <!-- Adjust width for progress -->
+    
+        <!-- Progress Steps -->
+        <text x="5" y="90" font-family="Tahoma" font-size="10" fill="black">Start</text>
+        <text x="90" y="90" font-family="Tahoma" font-size="10" fill="black">Coding</text>
+        <text x="190" y="90" font-family="Tahoma" font-size="10" fill="black">Testing</text>
+        <text x="282" y="90" font-family="Tahoma" font-size="10" fill="black">Done</text>
+    
+        <!-- Footer -->
+        <text x="5" y="110" font-family="Tahoma" font-size="10" fill="#555555">28 days Remaining</text>
+        <rect x="320" y="65" width="70" height="20" fill="#E7E7E7" stroke="#A0A0A0" stroke-width="1" rx="3" ry="3"/>
+        <text x="335" y="80" font-family="Tahoma" font-size="12" fill="black" style="cursor: pointer;">Cancel</text>
+    </svg>
