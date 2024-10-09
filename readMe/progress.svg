@@ -16,7 +16,7 @@
         <!-- Progress Bar Container -->
         <text x="5" y="60" font-family="Tahoma" font-size="12" fill="black">From 'Nothing' to 'Building Something Great!'</text>
         <rect x="5" y="70" width="300" height="10" fill="#E5E5E5" stroke="#909090" stroke-width="1"/>
-        <rect x="5" y="70" width="80" height="10" fill="#0066CC"/> <!-- Adjust width for progress -->
+        <rect x="7" y="72" width="130" height="6" fill="#0066CC"/> <!-- Adjust width for progress -->
     
         <!-- Progress Steps -->
         <text x="5" y="90" font-family="Tahoma" font-size="10" fill="black">Start</text>
