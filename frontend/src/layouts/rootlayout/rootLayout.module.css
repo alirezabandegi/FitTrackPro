@@ -86,7 +86,6 @@
                 
                 div{
                     display: flex;
-                    align-items: center;
                 }
                 .userLinks{
                     margin-left: 0;
@@ -119,5 +118,11 @@
         width: 100%;
         text-align: center;
         font-size: 1.2rem;
+    }
+    .mainHeaderlogInButton{
+        margin-bottom: 2rem;
+        width: 100%;
+        font-size: 1.2rem;
+        text-align: center;
     }
 }
