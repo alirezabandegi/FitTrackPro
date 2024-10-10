@@ -4,7 +4,7 @@
 
 ## Project Progress
 
-![Project Progress](readMe/progress.svg)
+![Project Progress](readMe.md_DoNotTouch/progress.svg)
 
 ## Features
 
