@@ -1,0 +1,15 @@
+.logOutButton{
+    color: #f1f1f1;
+    background-color: transparent;
+    padding: 8px;
+    outline: none;
+    border: 1px solid #f1f1f1;
+    border-radius: 8px;
+}
+@media screen and (max-width: 878px){
+    .logOutButton{
+        margin-bottom: 2rem;
+        width: 100%;
+        font-size: 1.2rem;
+    }
+}

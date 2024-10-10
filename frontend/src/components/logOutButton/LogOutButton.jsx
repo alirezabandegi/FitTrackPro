@@ -1,4 +1,5 @@
 import axios from 'axios';
+import style from "./logOutButton.module.css"
 
 const LogOutButton = ({ handleLogOut }) => {
     const handleLogout = async () => {
@@ -12,7 +13,7 @@ const LogOutButton = ({ handleLogOut }) => {
     };
 
     return (
-        <button onClick={handleLogout}>Log Out</button>
+        <button onClick={handleLogout} className={style.logOutButton}>Log Out</button>
     );
 };
 
