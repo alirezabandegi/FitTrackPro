@@ -2,10 +2,6 @@
 
 **FitTrackPro** is a fitness and gym progress tracking application. It helps users keep track of their workouts, fitness goals, and progress over time.
 
-## Project Progress
-
-![Project Progress](readMe.md_DoNotTouch/progress.svg)
-
 ## Features
 
 - User registration and authentication (with JWT).
@@ -13,6 +9,16 @@
 - Dashboard with visual progress reports.
 - Integration with MongoDB for storing user data and progress.
 - Responsive UI built with React.
+
+## Testing the Application
+
+To test the application, you can use the following login credentials:
+
+**Login Credentials:**
+- **Email:** `test@test.com`
+- **Password:** `12345678`
+
+Simply enter these details on the login page to access the application and explore its features.
 
 ## Technologies Used
 
@@ -89,6 +95,10 @@ cd FitTrackPro
 - **GET** `/api/auth/user`: Check if user logged in.
 - **GET** `/api/auth/profile`: User informations.
 - **GET** `/api/auth/progress`: Fetch user's workout progress.
+
+## Project Progress
+
+![Project Progress](readMe.md_DoNotTouch/progress.svg)
 
 ## License
 
