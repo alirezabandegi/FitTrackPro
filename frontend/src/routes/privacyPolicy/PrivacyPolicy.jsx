@@ -1,4 +1,4 @@
-import style from "./privacyPolicy.module.css"
+import style from "./privacyPolicy.module.css" // Importing CSS module for styling
 
 export default function PrivacyPolicy(){
     return(

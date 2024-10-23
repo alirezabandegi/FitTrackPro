@@ -1,53 +1,70 @@
 import { useState, useEffect } from "react";
 import { Link, Outlet} from "react-router-dom"
-import LogOutButton from "../../components/logOutButton/LogOutButton"
-import axios from 'axios';
+import LogOutButton from "../../components/logOutButton/LogOutButton" // LogOutButton component
+import axios from 'axios'; // HTTP client for making API requests
 import style from "./rootLayout.module.css"
 
 export default function RootLayout(){
+    // State to track if the user's token is verified
     const [tokenVerify, setTokenVerify] = useState(false);
+
+    // State to track the visibility of the navigation menu (depends on screen width)
     const [menuVisible, setMenuVisible] = useState(window.innerWidth > 878);
+
+    // State to track if the user manually toggled the menu
     const [userToggledMenu, setUserToggledMenu] = useState(false);
 
+    // Function to update menu visibility based on screen size
     const updateMenuVisibility = () => {
         const screenWidth = window.innerWidth;
 
+        // Show the menu if the screen width is greater than 878px
         if (screenWidth > 878) {
             setMenuVisible(true);
         }
+        // Hide the menu if screen is smaller and user hasn't manually toggled it
         else if (!userToggledMenu) {
             setMenuVisible(false);
         }
     };
 
+    // Check token validity when component mounts
     useEffect(() => {
         (
             async () => {
                 try {
+                    // Make a request to the backend to verify the token
                     await axios.get('http://localhost:3000/api/auth/user', { withCredentials: true })
                     .then(response => response.data.tokenverify ? setTokenVerify(true) : setTokenVerify(false));
                 } catch (error) {
-                    setTokenVerify(false)
-                    console.log(`TokenVerify: ${error.message}`)
+                    setTokenVerify(false) // If there's an error, assume the token is invalid
+                    console.log(`TokenVerify: ${error.message}`) // Log the error
                 }
             }
         )();
-
+    })
+    
+    // Update menu visibility on window resize
+    useEffect(() => {
         updateMenuVisibility();
 
+        // Add an event listener for window resize events
         window.addEventListener("resize", updateMenuVisibility);
 
+        // Clean up the event listener on component unmount
         return () => window.removeEventListener("resize", updateMenuVisibility);
-    }, [userToggledMenu])
+    }, [userToggledMenu]) // Re-run when user manually toggles menu
 
+    // Handler for logout button click, updates token verification state
     const handleLogOut = (value) => {
         setTokenVerify(value)
     }
     
+    // Handler for the menu toggle button, shows/hides menu on small screens
     const handleMenu = () => {
         if (window.innerWidth <= 878) {
             setMenuVisible(!menuVisible);
-            setUserToggledMenu(!menuVisible);
+            setUserToggledMenu(!menuVisible); // Track whether the user manually toggled the menu
         }
     }
 
@@ -83,6 +100,8 @@ export default function RootLayout(){
                     </rect>
                 </svg>
             </header>
+
+            {/* Main content area where nested routes are rendered */}
             <main>
                 <Outlet/>
             </main>

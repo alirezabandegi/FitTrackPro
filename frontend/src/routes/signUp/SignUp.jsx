@@ -1,35 +1,41 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import style from "./signUp.module.css";
 
 export default function SignUp(){
-    const navigate = useNavigate();
+    const navigate = useNavigate(); // Initialize useNavigate for redirecting users after sign-up
 
+    // State to hold form input data (name, email, and password)
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         password: ''
     });
     
+    // Update state when form inputs change
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
+    // Handle form submission
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault(); // Prevent default form submission behavior (page reload)
         try {
+            // Send POST request to sign-up API endpoint with form data
             await axios.post('http://localhost:3000/api/auth/signup', formData);
             alert('User registered successfully');
-            navigate("/logIn");
+            navigate("/logIn"); // Redirect user to the login page after successful sign-up
         } catch (error) {
+            // Handle errors that occur during sign-up
             if (error.response) {
-                alert(error.response.data.error);
-            } else if (error.request) {
+                // If the server responds with an error status
+                alert(error.response.data.error); // Show the error message from the response
+            } else if (error.request) { // If no response is received from the server
                 alert('No response from server. Please try again later.');
             } else {
-                alert('Error: ' + error.message);
+                // Handle other errors
+                alert('Error: ' + error.message); // Display the error message
             }
         }
     };
@@ -46,6 +52,8 @@ export default function SignUp(){
 
                 <button type="submit" className={style.submit}>Sign Up</button>
             </form>
+
+            {/* Link to the login page */}
             <p>Already have an account?</p>
             <Link to="/logIn" className={style.linkToLogInPage}>Login</Link>
         </div>
