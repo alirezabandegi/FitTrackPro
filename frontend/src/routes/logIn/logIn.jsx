@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useOutletContext } from "react-router-dom";
 import axios from "axios"; // Axios for making HTTP requests
 import style from "./logIn.module.css";
 
 export default function LogIn(){
     const navigate = useNavigate(); // Initialize useNavigate for redirecting users after login
+    const { handleLogOut } = useOutletContext();
 
     // State to hold form input data (email and password)
     const [formData, setFormData] = useState({
@@ -24,6 +25,7 @@ export default function LogIn(){
             // Send POST request to login API endpoint with form data
             await axios.post('http://localhost:3000/api/auth/login', formData, { withCredentials: true });
             alert('Login successful');
+            handleLogOut(true)
             navigate("/user/dashboard"); // Redirect user to the dashboard after successful login
         } catch (error) {
             // Handle errors that occur during login

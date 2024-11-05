@@ -103,7 +103,7 @@ export default function RootLayout(){
 
             {/* Main content area where nested routes are rendered */}
             <main>
-                <Outlet/>
+                <Outlet context={{ tokenVerify, handleLogOut }} />
             </main>
         </div>
     );

@@ -1,0 +1,72 @@
+.trackWorkoutSection{
+    width: 100%;
+    height: 100dvh;
+    margin-top: 8rem;
+    padding: 0 5%;
+    color: #f1f1f1;
+    display: flex;
+    flex-direction: column;
+}
+.startWorkoutSection{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    button{
+        color: #f1f1f1;
+        background-color: #1d9f09;
+        border: none;
+        padding: 8px;
+        border-radius: 8px;
+        font-size: 1rem;
+    }
+}
+.searchWorkout{
+    margin-top: 2rem;
+    align-self: center;
+    width: clamp(320px, 60%, 60rem);
+    height: 2.1rem;
+    font-size: 1.3rem;
+    text-align: center;
+    outline: none;
+    border-radius: 20px;
+}
+.chosenWorkoutDetails{
+    margin-top: 2.5rem;
+    background-color: rgba(0, 0, 0, 0.454);
+    border-radius: 30px;
+    text-align: center;
+}
+.chosenWorkoutImgandName{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 5px;
+
+    
+    img{
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+    }
+}
+.setsSection{
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: solid 1px #f1f1f190;
+}
+.setSection>div{
+    margin-top: 10px;
+}
+.addSetbutton{
+    margin-top: 15px;
+    color: #323d42;
+    background-color: #f1f1f1;
+    padding: 2px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    width: 5rem;
+    margin-bottom: 10px;
+}
