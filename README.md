@@ -10,16 +10,6 @@
 - Integration with MongoDB for storing user data and progress.
 - Responsive UI built with React.
 
-## Testing the Application
-
-To test the application, you can use the following login credentials:
-
-**Login Credentials:**
-- **Email:** `test@test.com`
-- **Password:** `12345678`
-
-Simply enter these details on the login page to access the application and explore its features.
-
 ## Technologies Used
 
 ### Frontend:

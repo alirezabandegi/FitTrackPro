@@ -1,0 +1,9 @@
+.set{
+    margin-top: 20px;
+}
+.set:first-child{
+    margin-top: 0px;
+}
+input{
+    text-align: center;
+}

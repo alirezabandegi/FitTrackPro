@@ -1,6 +1,5 @@
 .trackWorkoutSection{
     width: 100%;
-    height: 100dvh;
     margin-top: 8rem;
     padding: 0 5%;
     color: #f1f1f1;
@@ -21,52 +20,60 @@
         font-size: 1rem;
     }
 }
-.searchWorkout{
-    margin-top: 2rem;
-    align-self: center;
+.searchWorkoutContainer{
     width: clamp(320px, 60%, 60rem);
+    margin: 0 auto;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.searchWorkout{
+    align-self: center;
+    width: 100%;
     height: 2.1rem;
     font-size: 1.3rem;
     text-align: center;
     outline: none;
     border-radius: 20px;
+    border: none;
 }
-.chosenWorkoutDetails{
-    margin-top: 2.5rem;
-    background-color: rgba(0, 0, 0, 0.454);
-    border-radius: 30px;
-    text-align: center;
+.searchWorkoutActive{
+    border-radius: 20px 20px 0 0;
 }
-.chosenWorkoutImgandName{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin-top: 5px;
-
-    
-    img{
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-    }
+.searchAddButton{
+    border-radius: 0 20px 20px 0;
+    color: #f1f1f1;
+    background-color: #1d9f09;
+    border: none;
+    font-size: 1rem;
+    height: 2.1rem;
+    width: 5rem;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
-.setsSection{
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: solid 1px #f1f1f190;
+.searchAddButtonActive{
+    border-radius: 0 20px 0 0;
 }
-.setSection>div{
-    margin-top: 10px;
-}
-.addSetbutton{
-    margin-top: 15px;
+.suggestionsContainer{
     color: #323d42;
     background-color: #f1f1f1;
-    padding: 2px;
-    border-radius: 8px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    width: 5rem;
-    margin-bottom: 10px;
+    width: 100%;
+    max-height: 20.7rem;
+    text-align: center;
+    overflow-y: hidden;
+    position: absolute;
+    top: 2rem;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.suggestionItem{
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.suggestionItem:hover{
+    background-color: #c7c6c6;
 }
